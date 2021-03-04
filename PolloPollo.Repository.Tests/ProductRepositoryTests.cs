@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore.Sqlite;
-using Microsoft.EntityFrameworkCore.Sqlite.Query.Internal;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using PolloPollo.Entities;

@@ -14,8 +14,8 @@ namespace PolloPollo.Entities.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.8")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64)
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("PolloPollo.Entities.Application", b =>
                 {
@@ -120,26 +120,26 @@ namespace PolloPollo.Entities.Migrations
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("DeviceAddress")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("PairingSecret")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Street")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("StreetNumber")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -168,8 +168,8 @@ namespace PolloPollo.Entities.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Country")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
@@ -178,8 +178,8 @@ namespace PolloPollo.Entities.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Location")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
@@ -192,8 +192,8 @@ namespace PolloPollo.Entities.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -230,8 +230,8 @@ namespace PolloPollo.Entities.Migrations
 
                     b.Property<string>("Country")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
@@ -241,23 +241,23 @@ namespace PolloPollo.Entities.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("varchar(191) CHARACTER SET utf8mb4")
-                        .HasMaxLength(191);
+                        .HasMaxLength(191)
+                        .HasColumnType("varchar(191) CHARACTER SET utf8mb4");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("SurName")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Thumbnail")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -299,6 +299,10 @@ namespace PolloPollo.Entities.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PolloPollo.Entities.Producer", b =>
@@ -308,6 +312,8 @@ namespace PolloPollo.Entities.Migrations
                         .HasForeignKey("PolloPollo.Entities.Producer", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PolloPollo.Entities.Product", b =>
@@ -317,6 +323,8 @@ namespace PolloPollo.Entities.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PolloPollo.Entities.Receiver", b =>
@@ -326,6 +334,8 @@ namespace PolloPollo.Entities.Migrations
                         .HasForeignKey("PolloPollo.Entities.Receiver", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PolloPollo.Entities.UserRole", b =>
@@ -335,6 +345,24 @@ namespace PolloPollo.Entities.Migrations
                         .HasForeignKey("PolloPollo.Entities.UserRole", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("PolloPollo.Entities.Product", b =>
+                {
+                    b.Navigation("Applications");
+                });
+
+            modelBuilder.Entity("PolloPollo.Entities.User", b =>
+                {
+                    b.Navigation("Applications");
+
+                    b.Navigation("Producer");
+
+                    b.Navigation("Products");
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("UserRole");
                 });
 #pragma warning restore 612, 618
         }
