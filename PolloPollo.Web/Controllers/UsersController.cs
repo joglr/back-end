@@ -166,6 +166,7 @@ namespace PolloPollo.Web.Controllers
 
             var created = await _userRepository.CreateAsync(dto);
 
+            //token is not created, at
             if (created == null)
             {
                 // Already exists
@@ -223,7 +224,7 @@ namespace PolloPollo.Web.Controllers
                 {
                     return new StatusCodeResult(StatusCodes.Status500InternalServerError);
                 }
-            }     
+            }
         }
 
         // PUT api/users/5
@@ -254,7 +255,7 @@ namespace PolloPollo.Web.Controllers
         [ApiExplorerSettings(IgnoreApi = true)]
         [AllowAnonymous]
         [HttpPut("wallet")]
-        public async Task<ActionResult> PutDeviceAddress([FromBody] UserPairingDTO dto) 
+        public async Task<ActionResult> PutDeviceAddress([FromBody] UserPairingDTO dto)
         {
             if (!HttpContext.Request.IsLocal())
             {

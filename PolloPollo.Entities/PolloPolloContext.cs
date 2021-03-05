@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PolloPollo.Shared;
 
 namespace PolloPollo.Entities
 {
@@ -29,7 +30,7 @@ namespace PolloPollo.Entities
                 .HasConversion<int>();
             modelBuilder
                 .Entity<UserRole>()
-                .HasKey(e => new { e.UserId, e.UserRoleEnum });
+                .HasKey(e => new {e.UserId, e.UserRoleEnum});
             modelBuilder
                 .Entity<User>()
                 .HasAlternateKey(c => c.Email)

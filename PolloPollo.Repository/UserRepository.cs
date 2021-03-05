@@ -70,7 +70,8 @@ namespace PolloPollo.Services
                     Password = PasswordHasher.HashPassword(dto.Email, dto.Password),
                 };
 
-                var createdUser = _context.Users.Add(user);
+                var createdUser = await _context.Users.AddAsync(user);
+                await _context.SaveChangesAsync();
 
                 // Add the user to a role and add a foreign key for the ISA relationship
                 // Used to extend the information on a user and give access restrictions
@@ -398,7 +399,7 @@ namespace PolloPollo.Services
             } else if (dto.UserRole.Equals(nameof(UserRoleEnum.Receiver)))
             {
                 // Nothing to update since receivers has no extra fields
-            } else { 
+            } else {
                 return false;
             }
 
