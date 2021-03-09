@@ -398,93 +398,93 @@ namespace PolloPollo.Services
                                Available = p.Available,
                                Rank = p.Rank,
                                // Stats
-                           //     DateLastDonation = p.Applications.Count == 0
-                           //                          ? null
-                           //                          : p.Applications.Select(a => a.DateOfDonation).DefaultIfEmpty(DateTime.MinValue).Max().Equals(DateTime.MinValue)
-                           //                              ? null
-                           //                              : p.Applications.Select(a => a.DateOfDonation).DefaultIfEmpty(DateTime.MinValue).Max().ToString("yyyy-MM-dd HH':'mm"),
-                           //     CompletedDonationsPastWeek =
-                           //             (from a in p.Applications
-                           //              where a.Status == ApplicationStatusEnum.Completed && a.LastModified >= weekAgo
-                           //              select new
-                           //              { ApplicationId = a.Id }).Count(),
-                           //     CompletedDonationsPastMonth =
-                           //             (from a in p.Applications
-                           //              where a.Status == ApplicationStatusEnum.Completed && a.LastModified >= monthAgo
-                           //              select new
-                           //              { ApplicationId = a.Id }).Count(),
-                           //     CompletedDonationsAllTime =
-                           //              (from a in p.Applications
-                           //               where a.Status == ApplicationStatusEnum.Completed
-                           //               select new
-                           //               { ApplicationId = a.Id }).Count(),
-                           //     PendingDonationsPastWeek =
-                           //             (from a in p.Applications
-                           //              where (a.Status == ApplicationStatusEnum.Pending) && a.LastModified >= weekAgo
-                           //              select new
-                           //              { ApplicationId = a.Id }).Count(),
-                           //     PendingDonationsPastMonth =
-                           //             (from a in p.Applications
-                           //              where a.Status == ApplicationStatusEnum.Pending && a.LastModified >= monthAgo
-                           //              select new
-                           //              { ApplicationId = a.Id }).Count(),
-                           //     PendingDonationsAllTime =
-                           //              (from a in p.Applications
-                           //               where a.Status == ApplicationStatusEnum.Pending
-                           //               select new
-                           //               { ApplicationId = a.Id }).Count(),
-                           //     // Applications for the product of status x
-                           //     OpenApplications =
-                           //              (from a in p.Applications
-                           //               where a.Status == ApplicationStatusEnum.Open
-                           //               select new ApplicationDTO
-                           //               {
-                           //                   ApplicationId = a.Id,
-                           //                   ReceiverId = a.UserId,
-                           //                   ReceiverName = $"{a.User.FirstName} {a.User.SurName}",
-                           //                   Country = a.User.Country,
-                           //                   Thumbnail = ImageHelper.GetRelativeStaticFolderImagePath(a.User.Thumbnail),
-                           //                   ProductId = a.Product.Id,
-                           //                   ProductTitle = a.Product.Title,
-                           //                   ProductPrice = a.Product.Price,
-                           //                   ProducerId = a.Product.UserId,
-                           //                   Motivation = a.Motivation,
-                           //                   Status = a.Status,
-                           //               }).ToList(),
-                           //     PendingApplications =
-                           //              (from a in p.Applications
-                           //               where a.Status == ApplicationStatusEnum.Pending
-                           //               select new ApplicationDTO
-                           //               {
-                           //                   ApplicationId = a.Id,
-                           //                   ReceiverId = a.UserId,
-                           //                   ReceiverName = $"{a.User.FirstName} {a.User.SurName}",
-                           //                   Country = a.User.Country,
-                           //                   Thumbnail = ImageHelper.GetRelativeStaticFolderImagePath(a.User.Thumbnail),
-                           //                   ProductId = a.Product.Id,
-                           //                   ProductTitle = a.Product.Title,
-                           //                   ProductPrice = a.Product.Price,
-                           //                   ProducerId = a.Product.UserId,
-                           //                   Motivation = a.Motivation,
-                           //                   Status = a.Status,
-                           //               }).ToList(),
-                           //     ClosedApplications =
-                           //              (from a in p.Applications
-                           //               where a.Status == ApplicationStatusEnum.Unavailable
-                           //               select new ApplicationDTO
-                           //               {
-                           //                   ApplicationId = a.Id,
-                           //                   ReceiverId = a.UserId,
-                           //                   ReceiverName = $"{a.User.FirstName} {a.User.SurName}",
-                           //                   Country = a.User.Country,
-                           //                   Thumbnail = ImageHelper.GetRelativeStaticFolderImagePath(a.User.Thumbnail),
-                           //                   ProductId = a.Product.Id,
-                           //                   ProductTitle = a.Product.Title,
-                           //                   ProductPrice = a.Product.Price,
-                           //                   ProducerId = a.Product.UserId,
-                           //                   Motivation = a.Motivation,
-                           //                   Status = a.Status,
-                           //               }).ToList(),
+                           DateLastDonation = p.Applications.Count == 0
+                                                ? null
+                                                : p.Applications.Select(a => a.DateOfDonation).DefaultIfEmpty(DateTime.MinValue).Max().Equals(DateTime.MinValue)
+                                                    ? null
+                                                    : p.Applications.Select(a => a.DateOfDonation).DefaultIfEmpty(DateTime.MinValue).Max().ToString("yyyy-MM-dd HH':'mm"),
+                           CompletedDonationsPastWeek =
+                                   (from a in p.Applications
+                                    where a.Status == ApplicationStatusEnum.Completed && a.LastModified >= weekAgo
+                                    select new
+                                    { ApplicationId = a.Id }).Count(),
+                           CompletedDonationsPastMonth =
+                                   (from a in p.Applications
+                                    where a.Status == ApplicationStatusEnum.Completed && a.LastModified >= monthAgo
+                                    select new
+                                    { ApplicationId = a.Id }).Count(),
+                           CompletedDonationsAllTime =
+                                    (from a in p.Applications
+                                     where a.Status == ApplicationStatusEnum.Completed
+                                     select new
+                                     { ApplicationId = a.Id }).Count(),
+                           PendingDonationsPastWeek =
+                                   (from a in p.Applications
+                                    where (a.Status == ApplicationStatusEnum.Pending) && a.LastModified >= weekAgo
+                                    select new
+                                    { ApplicationId = a.Id }).Count(),
+                           PendingDonationsPastMonth =
+                                   (from a in p.Applications
+                                    where a.Status == ApplicationStatusEnum.Pending && a.LastModified >= monthAgo
+                                    select new
+                                    { ApplicationId = a.Id }).Count(),
+                           PendingDonationsAllTime =
+                                    (from a in p.Applications
+                                     where a.Status == ApplicationStatusEnum.Pending
+                                     select new
+                                     { ApplicationId = a.Id }).Count(),
+                           // Applications for the product of status x
+                           OpenApplications =
+                                    (from a in p.Applications
+                                     where a.Status == ApplicationStatusEnum.Open
+                                     select new ApplicationDTO
+                                     {
+                                         ApplicationId = a.Id,
+                                         ReceiverId = a.UserId,
+                                         ReceiverName = $"{a.User.FirstName} {a.User.SurName}",
+                                         Country = a.User.Country,
+                                         Thumbnail = ImageHelper.GetRelativeStaticFolderImagePath(a.User.Thumbnail),
+                                         ProductId = a.Product.Id,
+                                         ProductTitle = a.Product.Title,
+                                         ProductPrice = a.Product.Price,
+                                         ProducerId = a.Product.UserId,
+                                         Motivation = a.Motivation,
+                                         Status = a.Status,
+                                     }).ToList(),
+                           PendingApplications =
+                                    (from a in p.Applications
+                                     where a.Status == ApplicationStatusEnum.Pending
+                                     select new ApplicationDTO
+                                     {
+                                         ApplicationId = a.Id,
+                                         ReceiverId = a.UserId,
+                                         ReceiverName = $"{a.User.FirstName} {a.User.SurName}",
+                                         Country = a.User.Country,
+                                         Thumbnail = ImageHelper.GetRelativeStaticFolderImagePath(a.User.Thumbnail),
+                                         ProductId = a.Product.Id,
+                                         ProductTitle = a.Product.Title,
+                                         ProductPrice = a.Product.Price,
+                                         ProducerId = a.Product.UserId,
+                                         Motivation = a.Motivation,
+                                         Status = a.Status,
+                                     }).ToList(),
+                           ClosedApplications =
+                                    (from a in p.Applications
+                                     where a.Status == ApplicationStatusEnum.Unavailable
+                                     select new ApplicationDTO
+                                     {
+                                         ApplicationId = a.Id,
+                                         ReceiverId = a.UserId,
+                                         ReceiverName = $"{a.User.FirstName} {a.User.SurName}",
+                                         Country = a.User.Country,
+                                         Thumbnail = ImageHelper.GetRelativeStaticFolderImagePath(a.User.Thumbnail),
+                                         ProductId = a.Product.Id,
+                                         ProductTitle = a.Product.Title,
+                                         ProductPrice = a.Product.Price,
+                                         ProducerId = a.Product.UserId,
+                                         Motivation = a.Motivation,
+                                         Status = a.Status,
+                                     }).ToList(),
                            };
 
             return entities;
