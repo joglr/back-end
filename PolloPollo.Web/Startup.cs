@@ -21,6 +21,7 @@ using System.Net.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using Microsoft.IdentityModel.Logging;
 
 namespace PolloPollo.Web
 {
@@ -113,6 +114,8 @@ namespace PolloPollo.Web
 
                 if (Environment.IsDevelopment())
                 {
+                    // //Avoid token exception on creating new users
+                    // IdentityModelEventSource.ShowPII = true;
                     // Security definition and security requirement should only be present in dev environment
                     c.AddSecurityRequirement(new OpenApiSecurityRequirement{
                         {
@@ -169,7 +172,7 @@ namespace PolloPollo.Web
                     // domain/index.html
                     c.RoutePrefix = string.Empty;
 
-                    // Disables Try It Out for production 
+                    // Disables Try It Out for production
                     c.SupportedSubmitMethods();
                 });
             }

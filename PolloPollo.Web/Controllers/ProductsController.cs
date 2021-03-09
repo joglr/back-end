@@ -97,6 +97,7 @@ namespace PolloPollo.Web.Controllers
 
             var read = _productRepository.ReadFiltered(country, city);
             var list = await _productRepository.ReadFiltered(country, city).Skip(offset).Take(amount).ToListAsync();
+            var o = list.Count();
 
             return new ProductListDTO
             {
@@ -108,7 +109,7 @@ namespace PolloPollo.Web.Controllers
         // GET: api/product
         [ApiConventionMethod(typeof(DefaultApiConventions),
             nameof(DefaultApiConventions.Get))]
-        [AllowAnonymous] 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDTO>> Get(int id)
         {

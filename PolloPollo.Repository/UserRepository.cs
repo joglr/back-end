@@ -137,6 +137,7 @@ namespace PolloPollo.Services
 
                     var receiverUserRoleEntity = _context.UserRoles.Add(receiverUserRole);
 
+                    //Save the changes after adding a new user
                     await _context.SaveChangesAsync();
 
                     var receiver = new Receiver
@@ -531,6 +532,8 @@ namespace PolloPollo.Services
 
             // Import HmacSHa256 key to be used for creating a unique signing of the token
             // Defined in appsettings
+
+            //This _config.Secret was not getting updated after setting my UserSecret
             var key = Encoding.ASCII.GetBytes(_config.Secret);
 
             var tokenDescriptor = new SecurityTokenDescriptor
