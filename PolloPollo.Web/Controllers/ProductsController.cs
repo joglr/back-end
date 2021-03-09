@@ -97,7 +97,6 @@ namespace PolloPollo.Web.Controllers
 
             var read = _productRepository.ReadFiltered(country, city);
             var list = await _productRepository.ReadFiltered(country, city).Skip(offset).Take(amount).ToListAsync();
-            var o = list.Count();
 
             return new ProductListDTO
             {
