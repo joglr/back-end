@@ -392,17 +392,15 @@ namespace PolloPollo.Services
                                UserId = p.UserId,
                                Price = p.Price,
                                Country = p.Country,
-                               Thumbnail = ImageHelper.GetRelativeStaticFolderImagePath(p.Thumbnail),
+                               Thumbnail = p.Thumbnail != null ? ImageHelper.GetRelativeStaticFolderImagePath(p.Thumbnail) : null,
                                Description = p.Description,
                                Location = p.Location,
                                Available = p.Available,
                                Rank = p.Rank,
                                // Stats
-                           DateLastDonation = p.Applications.Count == 0
-                                                ? null
-                                                : p.Applications.Select(a => a.DateOfDonation).DefaultIfEmpty(DateTime.MinValue).Max().Equals(DateTime.MinValue)
+                           DateLastDonation = p.Applications.Select(a => a.DateOfDonation).Max().Equals(DateTime.MinValue)
                                                     ? null
-                                                    : p.Applications.Select(a => a.DateOfDonation).DefaultIfEmpty(DateTime.MinValue).Max().ToString("yyyy-MM-dd HH':'mm"),
+                                                    : p.Applications.Select(a => a.DateOfDonation).Max().ToString("yyyy-MM-dd HH':'mm"),
                            CompletedDonationsPastWeek =
                                    (from a in p.Applications
                                     where a.Status == ApplicationStatusEnum.Completed && a.LastModified >= weekAgo
