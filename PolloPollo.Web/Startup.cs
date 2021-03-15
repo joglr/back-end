@@ -45,7 +45,7 @@ namespace PolloPollo.Web
                 options.AddPolicy("policy",
                     builder => builder.AllowAnyOrigin()
                         .AllowAnyMethod()
-                        .AllowCredentials());
+                        .AllowAnyHeader());
             });
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddMvcCore()
