@@ -20,6 +20,7 @@ using PolloPollo.Services;
 using System.Net.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Cors;
 using System;
 
 namespace PolloPollo.Web
@@ -175,11 +176,10 @@ namespace PolloPollo.Web
             }
 
 
-            app.UseCors(x => x
-                .WithOrigins("https://test.pollopollo.org")
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
                 .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
+                .AllowAnyHeader());
 
             app.UseAuthentication();
 
