@@ -150,7 +150,6 @@ namespace PolloPollo.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors("policy");
             var swaggerPath = "/swagger/v1/swagger.json";
             var swaggerName = "PolloPollo API V1";
 
@@ -199,6 +198,7 @@ namespace PolloPollo.Web
             app.UseIpRateLimiting();
 
             app.UseRouting();
+            app.UseCors("policy");
 
             app.UseAuthorization();
 
