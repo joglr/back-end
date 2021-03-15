@@ -169,7 +169,7 @@ namespace PolloPollo.Web
                     // domain/index.html
                     c.RoutePrefix = string.Empty;
 
-                    // Disables Try It Out for production 
+                    // Disables Try It Out for production
                     c.SupportedSubmitMethods();
                 });
             }
@@ -178,7 +178,8 @@ namespace PolloPollo.Web
             app.UseCors(x => x
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
-                .AllowAnyHeader());
+                .AllowAnyHeader()
+                .AllowCredentials());
 
             app.UseAuthentication();
 
