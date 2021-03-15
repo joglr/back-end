@@ -39,6 +39,7 @@ namespace PolloPollo.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddMvcCore()
     .AddApiExplorer();
@@ -72,7 +73,6 @@ namespace PolloPollo.Web
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
             var appSettingsSection = Configuration.GetSection("Authentication");
             services.Configure<SecurityConfig>(appSettingsSection);
-            services.AddCors();
 
             services.AddAuthentication(options =>
             {
