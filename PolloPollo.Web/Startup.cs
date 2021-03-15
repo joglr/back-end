@@ -176,7 +176,7 @@ namespace PolloPollo.Web
 
 
             app.UseCors(x => x
-                .AllowAnyOrigin()
+                .WithOrigins("https://test.pollopollo.org")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());
